@@ -14,4 +14,4 @@ const Users2 = ({usersPromise}) => {
     );
 };
 
-export default Users2;
+export default Users2; 
