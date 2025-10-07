@@ -10,6 +10,8 @@ import Laptops from './Components/Laptops/Laptops.jsx'
 import Users from './Components/Users/Users.jsx'
 import Users2 from './Components/Users2/Users2.jsx'
 import UserDetails from './Components/UserDetails/UserDetails.jsx'
+import Posts from './Components/Posts/Posts.jsx'
+import PostDetail from './Components/PostDetail/PostDetail.jsx'
 
 const usersPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
 
@@ -28,14 +30,24 @@ const router = createBrowserRouter([
       },
       {
         path: 'users2',
-        element: <Suspense fallback={ <span>Loading....</span> }>
+        element: <Suspense fallback={<span>Loading....</span>}>
           <Users2 usersPromise={usersPromise} ></Users2>
         </Suspense>
       },
       {
         path: 'users/:userId',
-        loader: ({Params}) => fetch('https://jsonplaceholder.typicode.com/users'),
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
         Component: UserDetails
+      },
+      {
+        path: 'posts',
+        loader: () => fetch('https://jsonplaceholder.typicode.com/posts'),
+        Component: Posts
+      },
+      {
+        path: 'posts/:postId',
+        loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        Component: PostDetail
       }
     ]
   },
@@ -62,7 +74,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider
       router={router}
-     
+
     ></RouterProvider>
   </StrictMode>,
 )
