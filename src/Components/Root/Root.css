@@ -2,6 +2,6 @@
     display: flex;
     gap: 20px;
 }
-nav a.active {
+nav a.actives {
     text-decoration: underline;
 }
