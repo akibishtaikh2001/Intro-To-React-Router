@@ -68,7 +68,7 @@ const router = createBrowserRouter([
     // element:<App></App>
     Component: App
   }
-])
+]) 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
