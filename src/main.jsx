@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         Component: PostDetail
       }
-    ] 
+    ]
   },
   {
     path: 'about',
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
     // element:<App></App>
     Component: App
   }
-])    
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
